@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Capítulo 18: Autoridad | El Lugar de Su Presencia</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #F4F1EA;
+            color: #1E293B;
+            line-height: 1.5;
+            -webkit-tap-highlight-color: transparent;
+            padding-bottom: 95px;
+        }
+        header {
+            background: linear-gradient(135deg, #0F294A 0%, #1E293B 50%, #7C2D12 100%);
+            color: #ffffff;
+            padding: 22px 16px;
+            text-align: center;
+            border-bottom: 4px solid #C2410C;
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        header h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin: 6px 0 2px 0;
+            color: #ffffff;
+            line-height: 1.25;
+        }
+        header p {
+            font-size: 0.8rem;
+            color: #FED7AA;
+            font-weight: 300;
+        }
+        .badge {
+            display: inline-block;
+            background-color: rgba(217, 119, 6, 0.25);
+            color: #FDE68A;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(217, 119, 6, 0.4);
+        }
+        main {
+            max-width: 720px;
+            margin: 16px auto;
+            padding: 0 12px;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #E2E8F0;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+        .card h2, .card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0F294A;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .info-box {
+            background: linear-gradient(90deg, #EFF6FF 0%, #FFF7ED 100%);
+            border-left: 4px solid #C2410C;
+            padding: 12px;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.8rem;
+            color: #1E293B;
+            margin-top: 10px;
+        }
+        label {
+            display: block;
+            font-size: 0.825rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 4px;
+            line-height: 1.35;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid #CBD5E1;
+            font-size: 16px !important;
+            background-color: #FAFAFA;
+            margin-top: 4px;
+            margin-bottom: 8px;
+            font-family: inherit;
+        }
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: #C2410C;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.15);
+        }
+        .radio-tile-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .radio-tile {
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #FAFAFA;
+            font-size: 0.825rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 48px;
+        }
+        .radio-tile input { accent-color: #C2410C; }
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #E2E8F0;
+            background-color: #FAFAFA;
+            margin-bottom: 6px;
+            font-size: 0.78rem;
+        }
+        .checkbox-item input {
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            accent-color: #C2410C;
+        }
+        .btn-whatsapp {
+            width: 100%;
+            background-color: #059669;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        }
+        .sticky-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(15, 23, 42, 0.96);
+            backdrop-filter: blur(8px);
+            padding: 10px 14px;
+            border-top: 1px solid #334155;
+            z-index: 50;
+        }
+        #toast {
+            position: fixed;
+            bottom: 80px;
+            left: 16px;
+            right: 16px;
+            background-color: #0F172A;
+            color: #ffffff;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid #334155;
+            display: none;
+            z-index: 100;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="badge">
+            <i class="fa-solid fa-users"></i> Grupo de Conexión
+        </div>
+        <h1>Taller de Matrimonios: "Amor y Respeto"</h1>
+        <p>Iglesia El Lugar de Su Presencia &bull; Red de Parejas con Hijos Adultos</p>
+        <div style="margin-top: 8px; font-size: 0.725rem; color: #FDE68A; opacity: 0.9;">
+            <span><i class="fa-regular fa-bookmark"></i> Capítulo 18</span> &bull; 
+            <span><i class="fa-solid fa-hands-holding-child text-amber-400"></i> "Autoridad: Servir y Dirigir"</span>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="card">
+            <h2>
+                <span><i class="fa-solid fa-hand-holding-heart" style="color: #C2410C;"></i> AUTORIDAD BÍBLICA</span>
+            </h2>
+            <p style="font-size: 0.825rem; color: #334155; margin-bottom: 8px;">
+                <strong>Capítulo 18:</strong> “Autoridad: valore su deseo de servir”.
+            </p>
+            <div class="info-box">
+                <p style="font-weight: 700; color: #0F294A;">💡 Principio Clave:</p>
+                <p>La <strong>Esposa</strong> está equivocada cuando dice: “Quiero que él tome la cabeza, que sea el líder; sólo quiero asegurarme de que tome las decisiones de acuerdo con lo que yo quiero”.</p>
+            </div>
+        </div>
+
+        <form id="evaluationForm" onsubmit="event.preventDefault();">
+
+            <!-- DATOS DE REGISTRO -->
+            <div class="card">
+                <h3>
+                    <span>Datos de Registro</span>
+                    <span style="font-size: 0.7rem; color: #C2410C;">* Obligatorio</span>
+                </h3>
+
+                <div style="margin-bottom: 12px;">
+                    <label>Usted es: *</label>
+                    <div class="radio-tile-group">
+                        <label class="radio-tile">
+                            <input type="radio" name="rol" value="Esposo" required> Esposo (Azul)
+                        </label>
+                        <label class="radio-tile">
+                            <input type="radio" name="rol" value="Esposa" required> Esposa (Rosa)
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="nombre">Tu Nombre Completo *</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre y apellido...">
+                </div>
+
+                <div>
+                    <label for="conyuge">Nombre de tu Cónyuge *</label>
+                    <input type="text" id="conyuge" name="conyuge" required placeholder="Nombre de tu cónyuge...">
+                </div>
+            </div>
+
+            <!-- PREGUNTAS CAPÍTULO 18 -->
+            <div class="card">
+                <h3 style="color: #1E3A8A; border-bottom: 1px solid #BFDBFE; padding-bottom: 6px;">
+                    Preguntas del Capítulo 18
+                </h3>
+
+                <!-- P10 -->
+                <div style="margin-bottom: 16px;">
+                    <label>10. Esposa: ¿Quién es el jefe de la casa? Luego indique si está de acuerdo o no con las siguientes afirmaciones y explique brevemente:</label>
+                    <input type="text" name="q10_jefe" placeholder="¿Quién es el líder/jefe de la casa?">
+
+                    <p style="font-size: 0.75rem; color: #334155; margin-top: 6px;">• A. Según este capítulo: Los hombres y las mujeres son totalmente iguales, y los Esposos no tienen más responsabilidad y autoridad que sus Esposas:</p>
+                    <div style="display: flex; gap: 14px; font-size: 0.78rem;">
+                        <label><input type="radio" name="q10_a_val" value="De acuerdo"> De acuerdo</label>
+                        <label><input type="radio" name="q10_a_val" value="En desacuerdo"> En desacuerdo</label>
+                    </div>
+                    <textarea name="q10_a_exp" rows="1" placeholder="Explique..."></textarea>
+
+                    <p style="font-size: 0.75rem; color: #334155; margin-top: 6px;">• B. El Esposo bienintencionado que actúa responsable y amorosamente como líder de su hogar, siempre trata de resolver las cosas para llegar a acuerdos que sean mutuamente agradables:</p>
+                    <div style="display: flex; gap: 14px; font-size: 0.78rem;">
+                        <label><input type="radio" name="q10_b_val" value="De acuerdo"> De acuerdo</label>
+                        <label><input type="radio" name="q10_b_val" value="En desacuerdo"> En desacuerdo</label>
+                    </div>
+                    <textarea name="q10_b_exp" rows="1" placeholder="Explique..."></textarea>
+
+                    <p style="font-size: 0.75rem; color: #334155; margin-top: 6px;">• C1. Si una Esposa toma mejores decisiones y tiene mejor criterio que su Esposo, debería exigir igualdad en la toma de decisiones con respecto a qué comprar, adónde ir o qué hacer:</p>
+                    <div style="display: flex; gap: 14px; font-size: 0.78rem;">
+                        <label><input type="radio" name="q10_c1_val" value="De acuerdo"> De acuerdo</label>
+                        <label><input type="radio" name="q10_c1_val" value="En desacuerdo"> En desacuerdo</label>
+                    </div>
+                    <textarea name="q10_c1_exp" rows="1" placeholder="Explique..."></textarea>
+
+                    <p style="font-size: 0.75rem; color: #334155; margin-top: 6px;">• C2. La Esposa bienintencionada que es más competente que su Esposo debe demostrar sus capacidades mediante sus palabras respetuosas y su actitud deferente, en la confianza de que con el tiempo su esposo valorará sus talentos:</p>
+                    <div style="display: flex; gap: 14px; font-size: 0.78rem;">
+                        <label><input type="radio" name="q10_c2_val" value="De acuerdo"> De acuerdo</label>
+                        <label><input type="radio" name="q10_c2_val" value="En desacuerdo"> En desacuerdo</label>
+                    </div>
+                    <textarea name="q10_c2_exp" rows="1" placeholder="Explique..."></textarea>
+                </div>
+
+                <!-- P11 -->
+                <div style="margin-bottom: 16px;">
+                    <label>11. “Sométanse unos a otros, por reverencia a Cristo. Esposas, sométanse a sus propios esposos como al Señor. Porque el esposo es cabeza de su esposa, así como Cristo es cabeza de la iglesia, la cual es su cuerpo, y él su Salvador” (Efesios 5:21-23 NVI). La Escritura habla de sumisión mutua: El <strong>Esposo</strong> es la ___ y la <strong>Esposa</strong> debe ___:</label>
+                    <textarea name="q11" rows="2" placeholder="Complete y reflexione sobre este pasaje..."></textarea>
+                </div>
+
+                <!-- P12 -->
+                <div style="margin-bottom: 16px;">
+                    <label>12. “La autoridad debe venir con responsabilidad”. Marque su reacción a cada párrafo y explique brevemente:</label>
+                    
+                    <p style="font-size: 0.75rem; color: #334155; margin-top: 6px;">• A. Erigir un matrimonio con dos iguales como cabeza es destinarlo al fracaso. La Escritura enseña claramente que la Esposa es llamada a adherirse a la opinión o voluntad de su Esposo:</p>
+                    <div style="display: flex; gap: 14px; font-size: 0.78rem;">
+                        <label><input type="radio" name="q12_a_val" value="De acuerdo"> De acuerdo</label>
+                        <label><input type="radio" name="q12_a_val" value="En desacuerdo"> En desacuerdo</label>
+                    </div>
+                    <textarea name="q12_a_exp" rows="1" placeholder="Explique..."></textarea>
+
+                    <p style="font-size: 0.75rem; color: #334155; margin-top: 6px;">• B. Principio del 51% de responsabilidad y 51% de autoridad para el Esposo ante Dios:</p>
+                    <div style="display: flex; gap: 14px; font-size: 0.78rem;">
+                        <label><input type="radio" name="q12_b_val" value="De acuerdo"> De acuerdo</label>
+                        <label><input type="radio" name="q12_b_val" value="En desacuerdo"> En desacuerdo</label>
+                    </div>
+                    <textarea name="q12_b_exp" rows="1" placeholder="Explique..."></textarea>
+
+                    <p style="font-size: 0.75rem; color: #334155; margin-top: 6px;">• C. En cien decisiones familiares, la Esposa tendrá la opinión más fuerte sobre noventa y nueve de ellas, y será respetada y escuchada:</p>
+                    <div style="display: flex; gap: 14px; font-size: 0.78rem;">
+                        <label><input type="radio" name="q12_c_val" value="De acuerdo"> De acuerdo</label>
+                        <label><input type="radio" name="q12_c_val" value="En desacuerdo"> En desacuerdo</label>
+                    </div>
+                    <textarea name="q12_c_exp" rows="1" placeholder="Explique..."></textarea>
+                </div>
+
+                <!-- P13 -->
+                <div>
+                    <label>13. Esposa: El <strong>Esposo</strong> sentirá que usted aprecia su autoridad y su liderazgo cuando usted:</label>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="q13_items" value="A. Le diga que está agradecida por su fuerza y disfruta poder apoyarse en él.">
+                        <span>A. Le diga que está agradecida por su fuerza y disfruta poder apoyarse en él.</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="q13_items" value="B. Respalde la autoimagen de su posición como líder.">
+                        <span>B. Respalde la autoimagen de su posición como líder.</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="q13_items" value="C. Tú eres responsable pero no somos iguales, así que no tomes una decisión con la que yo no esté de acuerdo.">
+                        <span>C. "Tú eres responsable pero no somos iguales, así que no tomes una decisión con la que yo no esté de acuerdo".</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="q13_items" value="D. Alabe sus buenas decisiones.">
+                        <span>D. Alabe sus buenas decisiones.</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="q13_items" value="E. Sea cortés si toma una decisión equivocada.">
+                        <span>E. Sea cortés si toma una decisión equivocada.</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="q13_items" value="F. Esté en desacuerdo en privado y honre su autoridad delante de los hijos.">
+                        <span>F. Esté en desacuerdo en privado y honre su autoridad delante de los hijos.</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="q13_items" value="G. Dé sus motivos por los cuales no está de acuerdo, pero no ataque sus derechos a dirigir.">
+                        <span>G. Dé sus motivos por los cuales no está de acuerdo, pero no ataque sus derechos a dirigir.</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="q13_items" value="H. No juegue con él a que es la cabeza para hacerlo retroceder y volverlo un conciliador a la fuerza.">
+                        <span>H. No juegue con él a que es la cabeza para hacerlo retroceder y volverlo un conciliador a la fuerza.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENVÍO PARA WHATSAPP -->
+            <div class="card" style="background-color: #0F172A; color: #ffffff; border-color: #334155;">
+                <h3 style="color: #34D399; border-bottom-color: #1E293B;">
+                    <span><i class="fa-brands fa-whatsapp"></i> Envío para WhatsApp</span>
+                </h3>
+                <p style="font-size: 0.78rem; color: #CBD5E1; margin-bottom: 12px;">
+                    Al terminar, presiona el botón para copiar tus respuestas con formato especial y pégalas en el chat de tu Grupo de Cuatro.
+                </p>
+
+                <button type="button" class="btn-whatsapp" onclick="copyForWhatsApp()">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> Copiar Respuestas para WhatsApp
+                </button>
+            </div>
+
+        </form>
+
+    </main>
+
+    <!-- Barra flotante móvil -->
+    <div class="sticky-bottom-bar">
+        <button type="button" class="btn-whatsapp" onclick="copyForWhatsApp()">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i>
+            <span>Copiar para WhatsApp</span>
+        </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast">
+        <i id="toastIcon" class="fa-solid fa-circle-check" style="color: #34D399; font-size: 1.2rem;"></i>
+        <span id="toastMsg">Mensaje...</span>
+    </div>
+
+    <script>
+        function getFormData() {
+            const form = document.getElementById('evaluationForm');
+            const formData = new FormData(form);
+
+            const q13Checked = [];
+            document.querySelectorAll('input[name="q13_items"]:checked').forEach(cb => q13Checked.push(cb.value));
+
+            return {
+                fecha: new Date().toLocaleString('es-CO'),
+                rol: formData.get('rol') || '',
+                nombre: formData.get('nombre') || '',
+                conyuge: formData.get('conyuge') || '',
+                q10_jefe: formData.get('q10_jefe') || '',
+                q10_a_val: formData.get('q10_a_val') || 'S/R',
+                q10_a_exp: formData.get('q10_a_exp') || '',
+                q10_b_val: formData.get('q10_b_val') || 'S/R',
+                q10_b_exp: formData.get('q10_b_exp') || '',
+                q10_c1_val: formData.get('q10_c1_val') || 'S/R',
+                q10_c1_exp: formData.get('q10_c1_exp') || '',
+                q10_c2_val: formData.get('q10_c2_val') || 'S/R',
+                q10_c2_exp: formData.get('q10_c2_exp') || '',
+                q11: formData.get('q11') || '',
+                q12_a_val: formData.get('q12_a_val') || 'S/R',
+                q12_a_exp: formData.get('q12_a_exp') || '',
+                q12_b_val: formData.get('q12_b_val') || 'S/R',
+                q12_b_exp: formData.get('q12_b_exp') || '',
+                q12_c_val: formData.get('q12_c_val') || 'S/R',
+                q12_c_exp: formData.get('q12_c_exp') || '',
+                q13_items: q13Checked.join('\n   • ')
+            };
+        }
+
+        function validateForm(data) {
+            if (!data.rol) {
+                showToast("Por favor seleccione si es Esposo o Esposa.", "error");
+                return false;
+            }
+            if (!data.nombre.trim()) {
+                showToast("Por favor ingrese su Nombre Completo.", "error");
+                document.getElementById('nombre').focus();
+                return false;
+            }
+            if (!data.conyuge.trim()) {
+                showToast("Por favor ingrese el Nombre de su Cónyuge.", "error");
+                document.getElementById('conyuge').focus();
+                return false;
+            }
+            return true;
+        }
+
+        function copyForWhatsApp() {
+            const data = getFormData();
+            if (!validateForm(data)) return;
+
+            let text = `*GRUPO DE CONEXIÓN*\n`;
+            text += `*Iglesia El Lugar de Su Presencia*\n`;
+            text += `📖 *Capítulo 18: AUTORIDAD (Amor y Respeto)*\n`;
+            text += `──────────────────────\n`;
+            text += `👤 *Participante:* ${data.nombre} (${data.rol})\n`;
+            text += `💍 *Cónyuge:* ${data.conyuge}\n`;
+            text += `📅 *Fecha:* ${data.fecha}\n`;
+            text += `──────────────────────\n\n`;
+            text += `*RESPUESTAS:*\n\n`;
+            text += `*10. Jefe de casa & Posturas:*\n`;
+            text += `   • Jefe: ${data.q10_jefe || 'S/R'}\n`;
+            text += `   • A (Totalmente iguales): ${data.q10_a_val} - ${data.q10_a_exp}\n`;
+            text += `   • B (Líder amoroso): ${data.q10_b_val} - ${data.q10_b_exp}\n`;
+            text += `   • C1 (Exigir igualdad): ${data.q10_c1_val} - ${data.q10_c1_exp}\n`;
+            text += `   • C2 (Competente con respeto): ${data.q10_c2_val} - ${data.q10_c2_exp}\n\n`;
+            text += `*11. Efesios 5:21-23 (Sumisión mutua):* ${data.q11 || 'S/R'}\n\n`;
+            text += `*12. Autoridad con Responsabilidad:*\n`;
+            text += `   • A (No dos cabezas): ${data.q12_a_val} - ${data.q12_a_exp}\n`;
+            text += `   • B (51% de responsabilidad): ${data.q12_b_val} - ${data.q12_b_exp}\n`;
+            text += `   • C (99 de 100 decisiones): ${data.q12_c_val} - ${data.q12_c_exp}\n\n`;
+            text += `*13. Apreciar Autoridad y Liderazgo:*\n   • ${data.q13_items || 'Ninguna seleccionada'}\n\n`;
+            text += `*Compromiso Bíblico:* "La autoridad bíblica es servicio sacrificial; liderar como Cristo lideró a la Iglesia."`;
+
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+
+            showToast("¡Respuestas copiadas! Pégalas en el chat de tu Grupo de 4 en WhatsApp.", "success");
+        }
+
+        function showToast(msg, type = "success") {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMsg.innerText = msg;
+            if (type === "success") {
+                toastIcon.className = "fa-solid fa-circle-check";
+                toastIcon.style.color = "#34D399";
+            } else if (type === "error") {
+                toastIcon.className = "fa-solid fa-triangle-exclamation";
+                toastIcon.style.color = "#F87171";
+            } else {
+                toastIcon.className = "fa-solid fa-circle-info";
+                toastIcon.style.color = "#60A5FA";
+            }
+
+            toast.style.display = "flex";
+            setTimeout(() => { toast.style.display = "none"; }, 4000);
+        }
+    </script>
+</body>
+</html>
